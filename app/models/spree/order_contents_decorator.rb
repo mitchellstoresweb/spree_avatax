@@ -1,12 +1,12 @@
 Spree::OrderContents.class_eval do
-  def add_with_avatax(variant, quantity = 1, currency = nil, shipment = nil)
-    add_without_avatax(variant, quantity, currency, shipment).tap do
+  def add_with_avatax(variant, quantity = 1, options = {})
+    add_without_avatax(variant, quantity, options).tap do
       avatax_compute_tax
     end
   end
 
-  def remove_with_avatax(variant, quantity = 1, shipment = nil)
-    remove_without_avatax(variant, quantity, shipment).tap do
+  def remove_with_avatax(variant, quantity = 1, options = {})
+    remove_without_avatax(variant, quantity, options).tap do
       avatax_compute_tax
     end
   end
