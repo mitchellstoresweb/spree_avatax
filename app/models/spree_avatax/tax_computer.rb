@@ -37,7 +37,7 @@ class SpreeAvatax::TaxComputer
         :source => Spree::TaxRate.avatax_the_one_rate,
         :state => 'closed', # this tells spree not to automatically recalculate avatax tax adjustments
       })
-      Spree::ItemAdjustments.new(line_item).update
+      Spree::Adjustable::AdjustmentsUpdater.new(line_item).update
       line_item.save!
     end
 
@@ -60,7 +60,7 @@ class SpreeAvatax::TaxComputer
         included_tax_total: 0,
       })
 
-      Spree::ItemAdjustments.new(line_item).update
+      Spree::Adjustable::AdjustmentsUpdater.new(line_item).update
       line_item.save!
     end
 
