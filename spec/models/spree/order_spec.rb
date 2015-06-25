@@ -57,8 +57,8 @@ describe Spree::Order do
 
     context 'there are eligible adjustments' do
       before do
-        subject.adjustments.create(source_type: "Spree::PromotionAction", eligible: false, amount: -5.0, label: 'Promo One')
-        subject.adjustments.create(source_type: "Spree::PromotionAction", eligible: true, amount: -10.99, label: 'Promo Two')
+        subject.adjustments.create!(source_type: "Spree::PromotionAction", order: subject, eligible: false, amount: -5.0, label: 'Promo One')
+        subject.adjustments.create!(source_type: "Spree::PromotionAction", order: subject, eligible: true, amount: -10.99, label: 'Promo Two')
       end
 
       it 'returns 10.99' do
